@@ -31,15 +31,12 @@ var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-app.get('/whoami',function(req,res){
-  console.log(JSON.stringify(req.ip))
-  console.log(JSON.stringify(req.headers['accept-language']));
-  console.log(JSON.stringify(req.headers['user-agent']));
+app.get('/api/whoami',function(req,res){
 
-  var ip = req.ip.toString();
-  var lang = req.headers['accept-language'].toString();
-  var software = req.headers['user-agent'].toString();
+  var ip = req.ip;
+  var lang = req.headers['accept-language'];
+  var software = req.headers['user-agent'];
 
-  res.json({ipadress: ip,language: lang,software: software});
+  res.json({ipaddress: ip,language: lang,software: software});
 
 });
